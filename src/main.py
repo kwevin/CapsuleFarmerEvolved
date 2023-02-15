@@ -93,7 +93,7 @@ if __name__ == '__main__':
         log, config = init()
         main(log, config)
     except (KeyboardInterrupt, SystemExit):
-        print('Exiting. Thank you for farming with us!')
+        print('\nExiting. Thank you for farming with us!')
         sys.exit()
     except CapsuleFarmerEvolvedException as e:
         if isinstance(log, logging.Logger):

@@ -1,6 +1,7 @@
 from threading import Thread
-from time import sleep
+from time import sleep, time
 from rich.live import Live
+from datetime import timedelta
 from rich.table import Table
 from rich.console import Console
 
@@ -22,11 +23,12 @@ class GuiThread(Thread):
         self.config = config
         self.stats = stats
         self.locks = locks
+        self.startTime = time()
     
     def generateTable(self):
         table = Table()
         table.add_column("Account")
-        table.add_column("Status")
+        table.add_column(f"Status - Uptime: {str(timedelta(seconds=int(time() - self.startTime)))}")
         table.add_column("Live matches")
         table.add_column("Heartbeat")
         table.add_column("Last drop")
